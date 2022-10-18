@@ -1,0 +1,83 @@
+<h2 class="contact__title">Contato</h2>
+<section class="contact__container">
+  <form class="contact-form" [formGroup]="formContato" (ngSubmit)="enviarFormulario()">
+    <input type="text" placeholder="Digite seu nome" formControlName="nome"
+      [class.valid]="formContato.controls['nome'].valid"
+      [class.invalid]="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)">
+    <div
+      *ngIf="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)">
+      <small class="error-message" *ngIf="formContato.controls['nome'].hasError('minlength')">
+        Esse campo precisa de no minimo 6 caracteres.
+      </small>
+      <small class="error-message" *ngIf="formContato.controls['nome'].hasError('required')">
+        Esse campo é obrigatório.
+      </small>
+    </div>
+
+    <input type="assunto" placeholder="Digite o assunto" formControlName="assunto"
+      [class.valid]="formContato.controls['assunto'].valid"
+      [class.invalid]="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+
+    <div
+      *ngIf="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+      <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('minlength')">
+        Esse campo precisa de no minimo 9 caracteres.
+      </small>
+      <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('required')">
+        Esse campo é obrigatório.
+      </small>
+    </div>
+
+
+    <input type="tel" placeholder="(00) 0 1234-5678" mask="(00) 0 0000-0000" formControlName="telefone"
+      [class.valid]="formContato.controls['telefone'].valid"
+      [class.invalid]="formContato.controls['telefone'].invalid && (formContato.controls['telefone'].touched || formContato.controls['telefone'].dirty)">
+
+    <div
+      *ngIf="formContato.controls['telefone'].invalid && (formContato.controls['telefone'].touched || formContato.controls['telefone'].dirty)">
+      <small class="error-message" *ngIf="formContato.controls['telefone'].hasError('minlength')">
+        Esse campo precisa de no minimo 11 caracteres.
+      </small>
+      <small class="error-message" *ngIf="formContato.controls['telefone'].hasError('required')">
+        Esse campo é obrigatório.
+      </small>
+    </div>
+
+
+    <input type="email" placeholder="Digite seu email" formControlName="email"
+      [class.valid]="formContato.controls['email'].valid"
+      [class.invalid]="formContato.controls['email'].invalid && (formContato.controls['email'].touched || formContato.controls['email'].dirty)">
+    <div
+      *ngIf="formContato.controls['email'].invalid && (formContato.controls['email'].touched || formContato.controls['email'].dirty)">
+      <small class="error-message" *ngIf="formContato.controls['email'].hasError('email')">
+        O e-mail precisa ser válido.
+      </small>
+      <small class="error-message" *ngIf="formContato.controls['email'].hasError('required')">
+        Esse campo é obrigatório.
+      </small>
+    </div>
+
+
+    <textarea maxlength="300" placeholder="Descreva aqui sua mensagem" rows="7" formControlName="mensagem"
+      [class.valid]="formContato.controls['mensagem'].valid" [class.invalid]="formContato.controls['mensagem'].invalid && 
+                    (formContato.controls['mensagem'].touched || formContato.controls['mensagem'].dirty)"></textarea>
+    <div
+      *ngIf="formContato.controls['mensagem'].invalid && (formContato.controls['mensagem'].touched || formContato.controls['mensagem'].dirty)">
+      <small class="error-message" *ngIf="formContato.controls['mensagem'].hasError('minlength')">
+        A mensagem precisa ter no minimo 40 caracteres.
+      </small>
+      <small class="error-message" *ngIf="formContato.controls['mensagem'].hasError('required')">
+        Esse campo é obrigatório.
+      </small>
+    </div>
+
+    <button [disabled]="formContato.invalid" type="submit">Enviar</button>
+  </form>
+  <address>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15839.362409385969!2d-37.2776596!3d-7.0280146!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbab39ed9b5fc3ac!2sLojas%20Compreveste!5e0!3m2!1spt-BR!2sbr!4v1666056318548!5m2!1spt-BR!2sbr"
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p>R. João da Mata, 141 - Centro, Patos - PB, 58700-080</p>
+  </address>
+</section>
